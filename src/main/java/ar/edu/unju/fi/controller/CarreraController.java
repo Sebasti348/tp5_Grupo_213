@@ -78,7 +78,7 @@ public class CarreraController {
 		return modelView;
 	}
 	
-    @GetMapping("/carreras")
+    @GetMapping("/listadoCarreras")
     public ModelAndView showCarreras() {
         // mostrar el listado
         ModelAndView modelView = new ModelAndView("listaDeCarreras");

@@ -21,6 +21,6 @@ public class Alumno {
 	private String telefono;
 	private String fec_nac;
 	private String domicilio;
-	private boolean estado;
+	private Boolean estado;
 	
 }

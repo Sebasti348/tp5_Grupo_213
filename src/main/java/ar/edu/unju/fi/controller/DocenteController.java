@@ -7,11 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-
 import ar.edu.unju.fi.dto.DocenteDTO;
-
-import ar.edu.unju.fi.model.Docente;
 import ar.edu.unju.fi.service.DocenteService;
 
 @Controller
@@ -69,22 +65,30 @@ public class DocenteController {
 	}
 	
 	@GetMapping("/modificarDocente/{legajo}")
-	public ModelAndView getFormModificarDocente(@PathVariable(name="legajo") String legajo) {
+	public ModelAndView getFormModificarDocente(@PathVariable(name = "legajo") String legajo) {
+		// buscar
+		// Docente docenteParaModificar = ListadoDocentes.buscarDocentePorLegajo(legajo);
 		DocenteDTO docente = docenteService.buscarDocente(legajo);
+		// mostrar el nuevo formulario
 		ModelAndView modelView = new ModelAndView("formDocente");
 		modelView.addObject("nuevoDocente", docente);
 		modelView.addObject("flag", true);
 		return modelView;
-		
 	}
-	
-	@PostMapping("/modificarDocente")
-	public ModelAndView modificarDocente (@ModelAttribute("nuevoDocente")DocenteDTO docenteModificado) {
+
+	@PostMapping("/modificarDocente")	
+	public ModelAndView updateDocente(@ModelAttribute("nuevoDocente") DocenteDTO docenteModificado) {
+
+		// guardar
+		//ListadoDocentes.modificarDocente(docenteModificada);
 		docenteService.modificarDocente(docenteModificado);
-		ModelAndView modelView =new ModelAndView("listadoDeDocentes");
-		modelView.addObject("listadoDocentes", docenteService.mostrarDocentes());
+		// mostrar el listado
+		ModelAndView modelView = new ModelAndView("listadoDeDocentes");
+		modelView.addObject("listaDocentes", docenteService.mostrarDocentes());
+
 		return modelView;
 	}
+	
 	
 		
 }

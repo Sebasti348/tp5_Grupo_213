@@ -19,6 +19,6 @@ public class AlumnoDTO {
 	private String telefono;
 	private String fec_nac;
 	private String domicilio;
-	private boolean estado;
+	private Boolean estado;
 
 }

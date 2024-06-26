@@ -78,7 +78,7 @@ public class MateriaController {
 		return modelView;
 	}
 	
-    @GetMapping("/materias")
+    @GetMapping("/listadoMaterias")
     public ModelAndView showMaterias() {
         // mostrar el listado
         ModelAndView modelView = new ModelAndView("listaDeMaterias");

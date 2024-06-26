@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.dto.AlumnoDTO;
+import ar.edu.unju.fi.dto.DocenteDTO;
 import ar.edu.unju.fi.mapper.AlumnoMapDTO;
 
 import ar.edu.unju.fi.repository.AlumnoRepository;
@@ -21,11 +22,8 @@ public class AlumnoServiceImp implements AlumnoService {
 
 	@Override
 	public void guardarAlumno(AlumnoDTO alumnoDTO) {
-		if(!alumnoRepository.existsById(alumnoDTO.getLu())) {
-			//alumnodDTO.setEstado(true);
-			alumnoRepository.save(
-			alumnoMapDTO.convertirAlumnoDTOAAlumno(alumnoDTO));
-		}
+		// TODO Auto-generated method stub
+		alumnoRepository.save(alumnoMapDTO.convertirAlumnoDTOAAlumno(alumnoDTO));
 	}
 	
 	@Override
@@ -56,6 +54,12 @@ public class AlumnoServiceImp implements AlumnoService {
 	@Override
 	public AlumnoDTO buscarAlumno(String lu) {
 		// TODO Auto-generated method stub
+		List<AlumnoDTO> fullAlumnos =alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAll());
+		for (AlumnoDTO alumno : fullAlumnos) {
+			if(alumno.getLu().equals(lu)) {
+				return alumno;
+			}
+		}
 		return null;
 	}
 
