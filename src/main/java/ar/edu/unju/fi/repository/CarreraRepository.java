@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import ar.edu.unju.fi.model.Materia;
+import ar.edu.unju.fi.model.Carrera;
 
 @Repository
-public interface MateriaRepository extends JpaRepository<Materia, String> {
-	List<Materia> findMateriasByEstado(Boolean estado);
+public interface CarreraRepository extends JpaRepository<Carrera, String> {
+	List<Carrera> findCarrerasByEstado(Boolean estado);
 }
+

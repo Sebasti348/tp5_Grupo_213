@@ -10,14 +10,10 @@ import lombok.Data;
 @Data
 @Entity
 
-public class Materia {
+public class Carrera {
 	@Id
 	private String codigo;
 	private String nombre;
-	private String curso;
 	private String cantidadHoras;
-	private Modalidad modalidad;
-	private String docente;
-	private String carrera;
 	private Boolean estado;
 }
