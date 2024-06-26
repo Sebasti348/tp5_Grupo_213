@@ -6,7 +6,7 @@
 <link rel="stylesheet"
 	data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 
-<title>Listado Materias</title>
+<title>Listado Carreras</title>
 </head>
 <body>
 	<div data-th-replace="~{fragments/header::navbar}"></div>
@@ -17,28 +17,20 @@
 				<tr>
 					<th scope="col">Codigo</th>
 					<th scope="col">Nombre</th>
-					<th scope="col">Curso</th>
 					<th scope="col">Cantidad Horas</th>
-					<th scope="col">Modalidad</th>
-					<th scope="col">Docente</th>
-					<th scope="col">Carrera</th>
 					<th scope="col">Estado</th>
-					<th scope="col">Edición</th>
+					<th scope="col">EdiciÃ³n</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-th-each="materia : ${listadoMaterias}">
-					<td data-th-text="${materia.codigo}"></td>
-					<td data-th-text="${materia.nombre}"></td>
-					<td data-th-text="${materia.curso}"></td>
-					<td data-th-text="${materia.cantidadHoras}"></td>
-					<td data-th-text="${materia.modalidad}"></td>
-					<td data-th-text="${materia.docente}"></td>
-					<td data-th-text="${materia.carrera}"></td>
-					<td data-th-text="${materia.estado}"></td>
-					<td><a data-th-href="@{'/borrarMateria/'+${materia.codigo}}"
+				<tr data-th-each="carrera : ${listadoCarreras}">
+					<td data-th-text="${carrera.codigo}"></td>
+					<td data-th-text="${carrera.nombre}"></td>
+					<td data-th-text="${carrera.cantidadHoras}"></td>
+					<td data-th-text="${carrera.estado}"></td>
+					<td><a data-th-href="@{'/borrarCarrera/'+${carrera.codigo}}"
 						class="btn btn-danger">Borrar</a> <a
-						data-th-href="@{'/modificarMateria/'+${materia.codigo}}"
+						data-th-href="@{'/modificarCarrera/'+${carrera.codigo}}"
 						class="btn btn-warning">Modificar</a></td>
 				</tr>
 			</tbody>
