@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <link rel="stylesheet"
 data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
@@ -17,38 +18,37 @@ data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 	 
 		<form data-th-object="${nuevoAlumno}" data-th-action="${flag}?@{/modificarAlumno}:@{/guardarAlumno}" method="post" class="row">
 			<div >
-				<label for="nombre" class="form-label text-white">Nombre Completo</label> <input type="text" class="form-control col-4"
-					id="nombre" aria-describedby="nombre" data-th-field="*{nombre}" placeholder="Ingrese nombre">
+				<label for="nombre" class="form-label text-white">Nombre Completo</label> <input type="text" class="form-control" id="nombre" data-th-field="*{nombre}"  required>
 			</div >
 			
 						<div class="col-6">
 				<label for="apellido" class="form-label text-white">Apellido</label> <input type="text" class="form-control col-4"
-					id="apellido" aria-describedby="apellido" data-th-field="*{apellido}">
+					id="apellido" aria-describedby="apellido" data-th-field="*{apellido}" required>
 			</div>
 						<div class="col-6">
 				<label for="email" class="form-label text-white">Email
 					</label> <input type="email" class="form-control"
-					id="email" aria-describedby="email" data-th-field="*{email}">
+					id="email" aria-describedby="email" data-th-field="*{email}" required>
 			</div>
 						<div class="col-6">
 				<label for="telefono" class="form-label text-white">Telefono</label> <input type="number" class="form-control col-4"
-					id="telefono" aria-describedby="telefono" data-th-field="*{telefono}">
+					id="telefono" aria-describedby="telefono" data-th-field="*{telefono}" required>
 			</div>
 						<div class="col-6">
 				<label for="fec_nac" class="form-label text-white">Fecha de nacimiento </label> <input type="date" class="form-control col-4"
-					id="fec_nac" aria-describedby="fec_nac" data-th-field="*{fec_nac}">
+					id="fec_nac" aria-describedby="fec_nac" data-th-field="*{fec_nac}" required>
 			</div>
 						<div class="col-6">
 				<label for="domicilio" class="form-label text-white">Domicilio</label> <input type="text" class="form-control col-4"
-					id="domicilio" aria-describedby="domicilio" data-th-field="*{domicilio}">
+					id="domicilio" aria-describedby="domicilio" data-th-field="*{domicilio}" required>
 			</div>
 			<div class="col-6">
 				<label for="dni" class="form-label text-white">DNI</label> <input type="number" class="form-control"
-					id="dni" aria-describedby="dni" data-th-field="*{dni}" >
+					id="dni" aria-describedby="dni" data-th-field="*{dni}" required>
 			</div>
 						<div class="col-6">
 				<label for="lu" class="form-label text-white">Libreta Universitaria</label> <input type="number" class="form-control"
-					id="lu" aria-describedby="lu" data-th-field="*{lu}" data-th-readonly=${flag}>
+					id="lu" aria-describedby="lu" data-th-field="*{lu}" data-th-readonly=${flag} required>
 			</div>
 			<div class="col-6">
 				<label for="estadoAlumno" class="form-label mt-1 ">Estado</label>
