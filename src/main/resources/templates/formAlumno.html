@@ -19,17 +19,22 @@ data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 			<div >
 				<label for="nombre" class="form-label text-white">Nombre Completo</label> <input type="text" class="form-control col-4"
 					id="nombre" aria-describedby="nombre" data-th-field="*{nombre}" placeholder="Ingrese nombre">
+					<p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
+
 			</div >
 			
 						<div class="col-6">
 				<label for="apellido" class="form-label text-white">Apellido</label> <input type="text" class="form-control col-4"
 					id="apellido" aria-describedby="apellido" data-th-field="*{apellido}">
+						
+	
 			</div>
 						<div class="col-6">
 				<label for="email" class="form-label text-white">Email
 					</label> <input type="email" class="form-control"
 					id="email" aria-describedby="email" data-th-field="*{email}">
-			</div>
+					
+			</div> 
 						<div class="col-6">
 				<label for="telefono" class="form-label text-white">Telefono</label> <input type="number" class="form-control col-4"
 					id="telefono" aria-describedby="telefono" data-th-field="*{telefono}">
@@ -37,6 +42,8 @@ data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 						<div class="col-6">
 				<label for="fec_nac" class="form-label text-white">Fecha de nacimiento </label> <input type="date" class="form-control col-4"
 					id="fec_nac" aria-describedby="fec_nac" data-th-field="*{fec_nac}">
+			
+					
 			</div>
 						<div class="col-6">
 				<label for="domicilio" class="form-label text-white">Domicilio</label> <input type="text" class="form-control col-4"
@@ -48,7 +55,9 @@ data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 			</div>
 						<div class="col-6">
 				<label for="lu" class="form-label text-white">Libreta Universitaria</label> <input type="number" class="form-control"
-					id="lu" aria-describedby="lu" data-th-field="*{lu}" data-th-readonly=${flag}>
+					id="lu" aria-describedby="lu" data-th-field="*{lu}" data-th-readonly=${flag} required>
+						<p class="form-text text-danger" data-th-if="${#fields.hasErrors('lu')}" data-th-errors="*{lu}"></p>
+					
 			</div>
 			<div class="col-6">
 				<label for="estadoAlumno" class="form-label mt-1 ">Estado</label>

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.dto.AlumnoDTO;
 import ar.edu.unju.fi.mapper.AlumnoMapDTO;
-
+import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.repository.AlumnoRepository;
 import ar.edu.unju.fi.service.AlumnoService;
 
@@ -20,18 +20,19 @@ public class AlumnoServiceImp implements AlumnoService {
 	AlumnoMapDTO alumnoMapDTO;
 
 	@Override
-	public void guardarAlumno(AlumnoDTO alumnoDTO) {
-		if(!alumnoRepository.existsById(alumnoDTO.getLu())) {
+	public void guardarAlumno(Alumno alumno) {
+		if(!alumnoRepository.existsById(alumno.getLu())) {
 			//alumnodDTO.setEstado(true);
-			alumnoRepository.save(
-			alumnoMapDTO.convertirAlumnoDTOAAlumno(alumnoDTO));
+			alumnoRepository.save(alumno);
 		}
 	}
 	
 	@Override
 	public List<AlumnoDTO> mostrarAlumnos() {
-		return alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAlumnoByEstado(true)); 	
-		}
+		//return alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAlumnoByEstado(true)); 	
+		return alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAlumnoByEstado(true));
+	}
+	
 	
 	@Override
 	public void borrarAlumno(String lu) {

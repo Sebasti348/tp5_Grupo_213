@@ -3,6 +3,8 @@ package ar.edu.unju.fi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,15 +14,16 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.dto.AlumnoDTO;
 import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.service.AlumnoService;
+import jakarta.validation.Valid;
 
 
-    
-
-
+   
 @Controller
 public class AlumnoController {
 	@Autowired
-	AlumnoDTO nuevoAlumnoDTO;
+	Alumno alumno;
+	@Autowired
+	AlumnoDTO nuevoAlumnoDTO;	
 	
 	@Autowired
 	AlumnoService alumnoService;
@@ -29,7 +32,7 @@ public class AlumnoController {
 	public ModelAndView getFormAlumno() {
 		
 		ModelAndView modelView = new ModelAndView("formAlumno");
-		modelView.addObject("nuevoAlumno", nuevoAlumnoDTO);	
+		modelView.addObject("nuevoAlumno", alumno);	
 		modelView.addObject("flag", false);
 		return modelView;
 	}
@@ -42,14 +45,21 @@ public class AlumnoController {
 		
 		return modelView;	
 	}
-	
+	 
 	@PostMapping("/guardarAlumno")
-	public ModelAndView saveAlumno(@ModelAttribute("nuevoAlumno") AlumnoDTO alumnoDTOParaGuardar) {
-				
-		alumnoService.guardarAlumno(alumnoDTOParaGuardar);
-		//Mostrar el listado
-		ModelAndView modelView = new ModelAndView("listadoDeAlumnos");
-		modelView.addObject("listadoAlumnos", alumnoService.mostrarAlumnos());	
+	public ModelAndView saveAlumno(@Valid @ModelAttribute("nuevoAlumno") Alumno alumnoParaGuardar, BindingResult resultado) {
+		ModelAndView modelView = new ModelAndView();
+		if(resultado.hasErrors()){
+			modelView.setViewName("formAlumno");
+		}
+		else {
+			//guardar
+			alumnoService.guardarAlumno(alumnoParaGuardar);
+			//Mostrar el listado
+			modelView.setViewName("listadoDeAlumnos");
+			modelView.addObject("listadoAlumnos", alumnoService.mostrarAlumnos());	
+			
+		}
 		
 		return modelView;		
 	}
