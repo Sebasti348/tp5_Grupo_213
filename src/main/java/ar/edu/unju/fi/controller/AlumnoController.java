@@ -2,6 +2,8 @@ package ar.edu.unju.fi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,22 +11,29 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.dto.AlumnoDTO;
+import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.service.AlumnoService;
+import ar.edu.unju.fi.service.MateriaService;
+import jakarta.validation.Valid;
 
 @Controller
 public class AlumnoController {
+	@Autowired
+	Alumno alumno;
 	@Autowired
 	AlumnoDTO nuevoAlumnoDTO;
 	
 	@Autowired
 	AlumnoService alumnoService;
-	
+	@Autowired
+	MateriaService materiaService;
 	@GetMapping("/formularioAlumno")
 	public ModelAndView getFormAlumno() {
 		
 		ModelAndView modelView = new ModelAndView("formAlumno");
-		modelView.addObject("nuevoAlumno", nuevoAlumnoDTO);	
+		modelView.addObject("nuevoAlumno", alumno);	
 		modelView.addObject("flag", false);
+		modelView.addObject("listaMaterias", materiaService.mostrarMaterias());
 		return modelView;
 	}
 	
@@ -38,14 +47,33 @@ public class AlumnoController {
 	}
 	
 	@PostMapping("/guardarAlumno")
-	public ModelAndView saveAlumno(@ModelAttribute("nuevoAlumno") AlumnoDTO alumnoDTOParaGuardar) {
-				
-		alumnoService.guardarAlumno(alumnoDTOParaGuardar);
-		//Mostrar el listado
-		ModelAndView modelView = new ModelAndView("listadoDeAlumnos");
-		modelView.addObject("listadoAlumnos", alumnoService.mostrarAlumnos());	
+	public ModelAndView saveAlumno(@Valid @ModelAttribute("nuevoAlumno") Alumno alumnoParaGuardar, BindingResult resul) {
+		ModelAndView modelView = new ModelAndView();
+		if(resul.hasErrors()) {
+			modelView.setViewName("formAlumno");
+		}
+		else {
+			modelView.setViewName("listadoDeAlumnos");
+			alumnoService.guardarAlumno(alumnoParaGuardar);
+			modelView.addObject("listadoAlumnos", alumnoService.mostrarAlumnos());
+
+		}
+		/*
+		 * try { alumnoService.guardarAlumno(alumnoParaGuardar) ; } catch (Exception e){
+		 * 
+		 * boolean errors = true; modelView.addObject("errors", errors);
+		 * modelView.addObject("carga AlumnoErrorMessage", e.getMessage());
+		 * System.out.println(e.getMessage()); }
+		 */
 		
-		return modelView;		
+		/*
+		 * if(resultado.hasErrors()) { modelView=new ModelAndView ("formAlumno"); } else
+		 * { alumnoService.guardarAlumno(alumnoParaGuardar); //mostrar el listado De
+		 * Alumnos modelView.setViewName("listadoDeAlumnos");
+		 * modelView.addObject("listaDOAlumnos", alumnoService.mostrarAlumnos()); }
+		 */
+		
+		return modelView;	
 	}
 	
 	@GetMapping("/modificarAlumno/{lu}")

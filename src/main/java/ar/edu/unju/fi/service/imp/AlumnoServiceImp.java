@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.dto.AlumnoDTO;
 import ar.edu.unju.fi.dto.DocenteDTO;
 import ar.edu.unju.fi.mapper.AlumnoMapDTO;
-
+import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.repository.AlumnoRepository;
 import ar.edu.unju.fi.service.AlumnoService;
 
@@ -16,14 +16,16 @@ import ar.edu.unju.fi.service.AlumnoService;
 @Service
 public class AlumnoServiceImp implements AlumnoService {
 	@Autowired
+	Alumno alumno;
+	@Autowired
 	AlumnoRepository alumnoRepository;
 	@Autowired
 	AlumnoMapDTO alumnoMapDTO;
 
 	@Override
-	public void guardarAlumno(AlumnoDTO alumnoDTO) {
+	public void guardarAlumno(Alumno alumno) {
 		// TODO Auto-generated method stub
-		alumnoRepository.save(alumnoMapDTO.convertirAlumnoDTOAAlumno(alumnoDTO));
+		alumnoRepository.save(alumno);
 	}
 	
 	@Override

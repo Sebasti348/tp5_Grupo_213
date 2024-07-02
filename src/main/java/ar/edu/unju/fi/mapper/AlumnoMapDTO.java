@@ -23,7 +23,8 @@ public interface AlumnoMapDTO {
 	@Mapping(source="fec_nac", target="fec_nac")
 	@Mapping(source="domicilio", target="domicilio")
 	@Mapping(source="estado", target="estado")
-	
+	@Mapping(source="materias", target="materias")
+	 
 		AlumnoDTO convertirAlumnoAAlumnoDTO(Alumno a);
 	@InheritConfiguration	
 		Alumno convertirAlumnoDTOAAlumno(AlumnoDTO adto);

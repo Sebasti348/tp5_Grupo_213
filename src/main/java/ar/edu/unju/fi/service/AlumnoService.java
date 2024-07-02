@@ -10,7 +10,7 @@ import ar.edu.unju.fi.model.Alumno;
 
 @Service
 public interface AlumnoService {
-	public void guardarAlumno(AlumnoDTO alumnoDTO);
+	public void guardarAlumno(Alumno alumno);
 	public List<AlumnoDTO> mostrarAlumnos();
 	public void borrarAlumno(String lu);
 	public void modificarAlumno(AlumnoDTO alumnoDTOModificado);
