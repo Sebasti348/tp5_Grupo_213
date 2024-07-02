@@ -18,44 +18,58 @@ data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 	 
 		<form data-th-object="${nuevoAlumno}" data-th-action="${flag}?@{/modificarAlumno}:@{/guardarAlumno}" method="post" class="row">
 			<div >
-				<label for="nombre" class="form-label text-white">Nombre Completo</label> <input type="text" class="form-control" id="nombre" data-th-field="*{nombre}"  required>
+				<label for="nombre" class="form-label text-white">Nombre Completo</label> <input type="text" class="form-control" id="nombre" data-th-field="*{nombre}"  >
+				<p class="text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
 			</div >
 			
 						<div class="col-6">
 				<label for="apellido" class="form-label text-white">Apellido</label> <input type="text" class="form-control col-4"
-					id="apellido" aria-describedby="apellido" data-th-field="*{apellido}" required>
+					id="apellido" aria-describedby="apellido" data-th-field="*{apellido}" >
+					<p class="text-danger" data-th-if="@{apellido}" data-th-errors="*{apellido}"></p>
 			</div>
 						<div class="col-6">
 				<label for="email" class="form-label text-white">Email
 					</label> <input type="email" class="form-control"
-					id="email" aria-describedby="email" data-th-field="*{email}" required>
+					id="email" aria-describedby="email" data-th-field="*{email}" >
 			</div>
 						<div class="col-6">
 				<label for="telefono" class="form-label text-white">Telefono</label> <input type="number" class="form-control col-4"
-					id="telefono" aria-describedby="telefono" data-th-field="*{telefono}" required>
+					id="telefono" aria-describedby="telefono" data-th-field="*{telefono}" >
 			</div>
 						<div class="col-6">
 				<label for="fec_nac" class="form-label text-white">Fecha de nacimiento </label> <input type="date" class="form-control col-4"
-					id="fec_nac" aria-describedby="fec_nac" data-th-field="*{fec_nac}" required>
+					id="fec_nac" aria-describedby="fec_nac" data-th-field="*{fec_nac}" >
 			</div>
 						<div class="col-6">
 				<label for="domicilio" class="form-label text-white">Domicilio</label> <input type="text" class="form-control col-4"
-					id="domicilio" aria-describedby="domicilio" data-th-field="*{domicilio}" required>
+					id="domicilio" aria-describedby="domicilio" data-th-field="*{domicilio}" >
 			</div>
 			<div class="col-6">
 				<label for="dni" class="form-label text-white">DNI</label> <input type="number" class="form-control"
 					id="dni" aria-describedby="dni" data-th-field="*{dni}" required>
 			</div>
 						<div class="col-6">
-				<label for="lu" class="form-label text-white">Libreta Universitaria</label> <input type="number" class="form-control"
+				<label for="lu" class="form-label ">Libreta Universitaria</label> <input type="number" class="form-control"
 					id="lu" aria-describedby="lu" data-th-field="*{lu}" data-th-readonly=${flag} required>
 			</div>
+			
 			<div class="col-6">
+				<label class="form-label text-white">Materias</label>
+				<select id="materia" name="materia" data-th-field="*{materias}" class="form-select">
+					<option value="">Selecione las Materias</option>
+					<option data-th-each="m:${listaMaterias}" data-th-value="${m.codigo}"  data-th-text="${m.nombre}"></option>
+				</select>
+
+
+			</div>
+			<div class="col-6">
+			
 				<label for="estadoAlumno" class="form-label mt-1 ">Estado</label>
-						<select id="estadoAlumno" data-th-field="*{estado}" class="form-select" required>
+						<select id="estadoAlumno"  class="form-select" data-th-field="*{estado}">
 							<option value=true>True</option>
 							<option value=false>False</option>
 						</select>
+				
 				
 			</div>
 			

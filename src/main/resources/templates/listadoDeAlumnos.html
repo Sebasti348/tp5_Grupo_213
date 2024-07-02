@@ -24,6 +24,8 @@ data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 				<th scope="col">Fecha de Nacimiento</th>
 				<th scope="col">Domicilio</th>
 				<th scope="col">Libreta Universitaria</th>
+				<th scope="col">Materias</th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -37,6 +39,7 @@ data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 				<td data-th-text="${alumno.fec_nac}"></td>
 				<td data-th-text="${alumno.domicilio}"></td>
 				<td data-th-text="${alumno.lu}"></td>
+				 <td data-th-text="${alumno.materias}"></td> 
 				<td>
 						<a data-th-href="@{'/borrarAlumno/'+${alumno.lu}}" class="btn btn-danger">Borrar</a>				
 						<a data-th-href="@{'/modificarAlumno/'+${alumno.lu}}" class="btn btn-warning">Modificar</a>
