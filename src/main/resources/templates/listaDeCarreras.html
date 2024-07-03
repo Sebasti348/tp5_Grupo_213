@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+
+<title>Listado Carreras</title>
+</head>
+<body>
+	<div data-th-replace="~{fragments/header::navbar}"></div>
+	<br>
+	<div style="background-color:#FF5733;">
+		
+	<div class="container" style="padding-top: 3rem; padding-bottom: 3rem">
+	<div class="table-responsive">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th scope="col">Codigo</th>
+	      <th scope="col">Nombre</th>
+	      <th scope="col">Cantidad</th>
+	      <th scope="col">Estado</th>
+	      <th scope="col">Edición</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr data-th-each="carreras : ${listadoCarreras}">
+	      <td data-th-text="${carreras.cod}"></td>
+	      <td data-th-text="${carreras.nombre}"></td>
+	      <td data-th-text="${carreras.cantAños}"></td>
+	      <td data-th-text="${carreras.estado}"></td>
+	      	<td>
+				<a data-th-href="@{'/borrarCarreras/'+${carreras.cod}}" class="btn btn-danger">Borrar</a>					
+				<a data-th-href="@{'/modificarCarreras/'+${carreras.cod}}" class="btn btn-warning" >Modificar</a>
+			</td>
+	    </tr>
+	   </tbody>
+	</table>
+	</div>
+	</div>
+	
+	</div>
+	<br>
+	<br>
+	<div data-th-replace="~{fragments/footer::footer}"></div>
+	<script
+		data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
