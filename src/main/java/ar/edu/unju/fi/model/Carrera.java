@@ -23,6 +23,6 @@ public class Carrera {
 	@Id
 	private String codigo;
 	private String nombre;
-	private int cantidadHoras;
+	private int cantidadAños;
 	private boolean estado;
 }

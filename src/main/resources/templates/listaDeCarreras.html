@@ -11,36 +11,30 @@
 <body>
 	<div data-th-replace="~{fragments/header::navbar}"></div>
 	<br>
-	<div style="background-color:#FF5733;">
-		
-	<div class="container" style="padding-top: 3rem; padding-bottom: 3rem">
-	<div class="table-responsive">
-	<table class="table table-striped">
-	  <thead>
-	    <tr>
-	      <th scope="col">Codigo</th>
-	      <th scope="col">Nombre</th>
-	      <th scope="col">Cantidad</th>
-	      <th scope="col">Estado</th>
-	      <th scope="col">Edición</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr data-th-each="carreras : ${listadoCarreras}">
-	      <td data-th-text="${carreras.cod}"></td>
-	      <td data-th-text="${carreras.nombre}"></td>
-	      <td data-th-text="${carreras.cantidadHoras}"></td>
-	      <td data-th-text="${carreras.estado}"></td>
-	      	<td>
-				<a data-th-href="@{'/borrarCarrera/'+${carrera.codigo}}" class="btn btn-danger">Borrar</a>					
-				<a data-th-href="@{'/modificarCarrera/'+${carrera.codigo}}" class="btn btn-warning" >Modificar</a>
-			</td>
-	    </tr>
-	   </tbody>
-	</table>
-	</div>
-	</div>
-	
+	<div class="container">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Codigo</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Cantidad Horas</th>
+					<th scope="col">Estado</th>
+					<th scope="col">Edicion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-th-each="carrera : ${listadoCarreras}">
+					<td data-th-text="${carrera.codigo}"></td>
+					<td data-th-text="${carrera.nombre}"></td>
+					<td data-th-text="${carrera.cantidadAños}"></td>
+					<td data-th-text="${carrera.estado}"></td>
+					<td><a data-th-href="@{'/borrarCarrera/'+${carrera.codigo}}"
+						class="btn btn-danger">Borrar</a> <a
+						data-th-href="@{'/modificarCarrera/'+${carrera.codigo}}"
+						class="btn btn-warning">Modificar</a></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<br>
 	<br>
