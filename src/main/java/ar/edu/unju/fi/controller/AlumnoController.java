@@ -72,6 +72,4 @@ public class AlumnoController {
 		return modelView;
 	} 
 	
-	
-  
 }
