@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 <title>Insert title here</title>
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+
 </head> 
 <body>
 	<div data-th-replace="~{fragments/header::navbar}">
@@ -16,27 +17,22 @@
 		<form data-th-object="${nuevoDocente}" data-th-action="${flag}?@{/modificarDocente}:@{/guardarDocente}" method="post">
 			<div class="col	" >
 				<label for="legajo" class="form-label"> Legajo </label> 
-				<input
-					type="number" class="form-control" id="legajo"
+				<input type="number" class="form-control" id="legajo"
 					aria-describedby="legajo" data-th-field="*{legajo}" data-th-readonly=${flag}>
-
 			</div>
 			<div class="col">
 				<label for="nombre" class="form-label">Nombre Completo</label> 
 				<input	type="text" class="form-control" id="nombre" aria-describedby="nombre" data-th-field="*{nombre}">
-
 			</div>
 			<div class="col">
 				<label for="apellido" class="form-label">Apellidos</label> <input
 					type="text" class="form-control" id="apellido"
 					aria-describedby="apellido" data-th-field="*{apellido}">
-
 			</div>
 			<div class="col">
 				<label for="email" class="form-label">Email </label> <input
 					type="email" class="form-control" id="email"
 					aria-describedby="email" data-th-field="*{email}">
-
 			</div>
 			<div class="col">
 				<label for="telefono" class="form-label">Telefono</label>
@@ -44,23 +40,17 @@
 			</div>
 			<div >
 				<label for="estadoAlumno" class="form-label mt-1 ">Estado</label>
-						<select id="estado" data-th-field="*{estado}" class="form-select" required>
-							<option value=true>True</option>
-							<option value=false>False</option>
-						</select>
-				
+					<select id="estado" data-th-field="*{estado}" class="form-select" required>
+						<option value=true>True</option>
+						<option value=false>False</option>
+					</select>		
 			</div>
-
 			<button type="submit" class="btn btn-primary">Guardar</button>
 		</form>
-
-
 	</div>
 			<div data-th-replace="~{fragments/footer::footer}">
 	
 	</div>
-
-
 
 	<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 
