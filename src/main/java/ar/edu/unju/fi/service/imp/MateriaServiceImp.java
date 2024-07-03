@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.dto.MateriaDTO;
 import ar.edu.unju.fi.mapper.MateriaMapDTO;
+import ar.edu.unju.fi.model.Materia;
 import ar.edu.unju.fi.repository.MateriaRepository;
 import ar.edu.unju.fi.service.MateriaService;
 
@@ -20,9 +21,9 @@ public class MateriaServiceImp implements MateriaService{
 	MateriaMapDTO materiaMapDto;
 	
 	@Override
-	public void guardarMateria(MateriaDTO materiaDTO) {
+	public void guardarMateria(Materia materia) {
 		// TODO Auto-generated method stub
-			materiaRepository.save(materiaMapDto.convertirMateriaDTOAMateria(materiaDTO));
+			materiaRepository.save(materia);
 	}
 
 	@Override
@@ -34,20 +35,20 @@ public class MateriaServiceImp implements MateriaService{
 
 	@Override
 	public void borrarMateria(String codigo) {
-		List<MateriaDTO> materias = materiaMapDto.convertirListaMateriaAListaMateriaDTO(materiaRepository.findAll());
+		List<Materia> materias = materiaRepository.findAll();
 		materias.forEach(materia -> {
 			if(materia.getCodigo().equals(codigo)) {
 				materia.setEstado(false);
-				materiaRepository.save(materiaMapDto.convertirMateriaDTOAMateria(materia));
+				materiaRepository.save(materia);
 			}
 		});
 	}
 
 	@Override
-	public MateriaDTO buscarMateria(String codigo) { 
+	public Materia buscarMateria(String codigo) { 
 		// TODO Auto-generated method stub
-		List<MateriaDTO> todasLasMaterias = materiaMapDto.convertirListaMateriaAListaMateriaDTO(materiaRepository.findAll());
-		for (MateriaDTO materias : todasLasMaterias) {
+		List<Materia> todasLasMaterias = materiaRepository.findAll();
+		for (Materia materias : todasLasMaterias) {
 			if(materias.getCodigo().equals(codigo)) {
 				return materias;
 			}
@@ -56,9 +57,9 @@ public class MateriaServiceImp implements MateriaService{
 	}
 
 	@Override
-	public void modificarMateria(MateriaDTO materiaDTO) {
+	public void modificarMateria(Materia materia) {
 		// TODO Auto-generated method stub
-		materiaRepository.save(materiaMapDto.convertirMateriaDTOAMateria(materiaDTO));
+		materiaRepository.save(materia);
 	}
 
 }

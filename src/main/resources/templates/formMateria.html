@@ -16,17 +16,20 @@
 		<form data-th-object="${nuevaMateria}"
 			data-th-action="${flag}?@{/modificarMateria}:@{/guardarMateria}"
 			method="post">
-
+			
 			<div class="col-sm-6">
 				<label for="codigo" class="form-label">Código</label> <input
 					type="text" class="form-control" id="codigo"
 					data-th-field="*{codigo}" data-th-readonly="${flag}" required>
 			</div>
-
+			
 			<div class="col-sm-6">
 				<label for="nombre" class="form-label">Nombre Materia</label> <input
 					type="text" class="form-control" id="nombre"
 					data-th-field="*{nombre}" required>
+				<p class="form-text text-danger"
+					data-th-if="${#fields.hasErrors('nombre')}"
+					data-th-errors="*{nombre}"></p>
 			</div>
 
 			<div class="col-sm-6">
@@ -58,11 +61,15 @@
 			</div>
 
 			<div class="col-sm-6">
-				<label for="docente" class="form-label">Docente</label> <input
-					type="text" class="form-control" id="docente"
-					data-th-field="*{docente}" required>
+				<label class="form-label" for="docente">Docente</label> <select
+					class="form-select" id="docente" data-th-field="*{docente.legajo}"
+					required>
+					<option value="">Seleccionar Docente</option>
+					<option data-th-each="d:${listadoDocentes}"
+						data-th-value="${d.legajo}" data-th-text="${d.nombre}"></option>
+				</select>
 			</div>
-
+			
 			<div class="col-sm-6">
 				<label for="carrera" class="form-label">Carrera</label> <input
 					type="text" class="form-control" id="carrera"
@@ -74,10 +81,13 @@
 			<div>
 				<button type="submit" class="btn btn-primary">Guardar
 					Materia</button>
-				<a class="btn btn-secondary" href="/listadoMaterias">Ver listado de
-					Materias</a>
+				<a class="btn btn-secondary" href="/listadoMaterias">Ver listado
+					de Materias</a>
 			</div>
 		</form>
+		<div class="alert alert-danger" role="alert" data-th-if="${errors}">
+			<p data-th-text="${cargaDocenteErrorMessage}"></p>
+		</div>
 	</div>
 	<br>
 	<br>

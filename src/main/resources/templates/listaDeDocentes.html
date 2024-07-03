@@ -3,11 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 <title>Insert title here</title>
-<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
 </head>
 <body>
-	<div data-th-replace="~{fragments/header::navbar}"></div>
+	<div data-th-replace="~{fragments/header::navbar}">
+	
+	</div>
 	<div class="container">
 		<table class="table">
 			<thead>
@@ -16,8 +19,8 @@
 				<th scope="col">Apellido</th>
 				<th scope="col">Nombre</th>
 				<th scope="col">Email</th>
-				<th scope="col">Telefono</th>
-				<th scope="col">Estado</th>
+				<th scope="col">Accion</th>
+
 			</tr>
 		</thead>
 		<tbody>
@@ -26,17 +29,24 @@
 				<td data-th-text="${docente.apellido}"></td>
 				<td data-th-text="${docente.nombre}"></td>
 				<td data-th-text="${docente.email}"></td>
-				<td data-th-text="${docente.telefono}"></td>
-				<td data-th-text="${docente.estado}"></td>
 				<td>
-					<a data-th-href="@{'/borrarDocente/'+${docente.legajo}}" class="btn btn-danger">Borrar</a>				
-					<a data-th-href="@{'/modificarDocente/'+${docente.legajo}}" class="btn btn-warning">Modificar</a>
+						<a data-th-href="@{'/eliminarDocente/'+${docente.legajo}}" class="btn btn-danger">Borrar</a>				
+						<a data-th-href="@{'/modificarDocente/'+${docente.legajo}}" class="btn btn-warning">Modificar</a>
+						
 				</td>
 			</tr>
 		</tbody>
+		
+		
+		
 		</table>
+
 	</div>
-				<div data-th-replace="~{fragments/footer::footer}"></div>
+				<div data-th-replace="~{fragments/footer::footer}">
+	
+	</div>
+
+
 
 	<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
 </body>

@@ -19,11 +19,9 @@
 					<th scope="col">Nombre</th>
 					<th scope="col">Curso</th>
 					<th scope="col">Cantidad Horas</th>
-					<th scope="col">Modalidad</th>
 					<th scope="col">Docente</th>
 					<th scope="col">Carrera</th>
-					<th scope="col">Estado</th>
-					<th scope="col">Edición</th>
+						<th scope="col">Accion</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,10 +30,8 @@
 					<td data-th-text="${materia.nombre}"></td>
 					<td data-th-text="${materia.curso}"></td>
 					<td data-th-text="${materia.cantidadHoras}"></td>
-					<td data-th-text="${materia.modalidad}"></td>
 					<td data-th-text="${materia.docente}"></td>
 					<td data-th-text="${materia.carrera}"></td>
-					<td data-th-text="${materia.estado}"></td>
 					<td><a data-th-href="@{'/borrarMateria/'+${materia.codigo}}"
 						class="btn btn-danger">Borrar</a> <a
 						data-th-href="@{'/modificarMateria/'+${materia.codigo}}"
@@ -43,6 +39,9 @@
 				</tr>
 			</tbody>
 		</table>
+	</div>
+	<div class="alert alert-danger" role="alert" data-th-if="${errors}">
+		<p data-th-text="${cargaMateriaErrorMessage}"></p>
 	</div>
 	<br>
 	<br>
