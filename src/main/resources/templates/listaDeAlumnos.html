@@ -12,28 +12,18 @@
 		<table class="table" >
 		<thead>
 			<tr>
-				
+				<th scope="col">Libreta Universitaria</th>
 				<th scope="col">Nombre</th>
 				<th scope="col">Apellido</th>
-				<th scope="col">DNI</th>
 				<th scope="col">Email</th>
-				<th scope="col">Telefono</th>
-				<th scope="col">Fecha de Nacimiento</th>
-				<th scope="col">Domicilio</th>
-				<th scope="col">Libreta Universitaria</th>
-				
 			</tr>
 		</thead>
 		<tbody>
 			<tr data-th-each="alumno : ${listadoAlumnos}">
+				<td data-th-text="${alumno.lu}"></td>
 				<td data-th-text="${alumno.nombre}"></td>
 				<td data-th-text="${alumno.apellido}"></td>
-				<td data-th-text="${alumno.dni}"></td>
 				<td data-th-text="${alumno.email}"></td>
-				<td data-th-text="${alumno.telefono}"></td>
-				<td data-th-text="${alumno.fec_nac}"></td>
-				<td data-th-text="${alumno.domicilio}"></td>
-				<td data-th-text="${alumno.lu}"></td>
 				<td>
 					<a data-th-href="@{'/borrarAlumno/'+${alumno.lu}}" class="btn btn-danger">Borrar</a>				
 					<a data-th-href="@{'/modificarAlumno/'+${alumno.lu}}" class="btn btn-warning">Modificar</a>

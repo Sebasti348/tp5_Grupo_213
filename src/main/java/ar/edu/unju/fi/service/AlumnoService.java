@@ -11,6 +11,6 @@ public interface AlumnoService {
 	public void guardarAlumno(Alumno alumno);
 	public List<AlumnoDTO> mostrarAlumnos();
 	public void borrarAlumno(String lu);
-	public void modificarAlumno(AlumnoDTO alumnoDTOModificado);
-	public AlumnoDTO buscarAlumno(String lu);
+	public void modificarAlumno(Alumno alumnoModificado);
+	public Alumno buscarAlumno(String lu);
 }

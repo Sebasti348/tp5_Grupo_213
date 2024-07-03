@@ -12,13 +12,8 @@ import lombok.Setter;
 @Component
 public class AlumnoDTO {
 	private String lu;
-	private String dni;
 	private String nombre;
 	private String apellido;
 	private String email;
-	private String telefono;
-	private String fec_nac;
-	private String domicilio;
-	private Boolean estado;
-
+	private boolean estado;
 }

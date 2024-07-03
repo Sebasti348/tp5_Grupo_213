@@ -41,15 +41,12 @@ public class AlumnoServiceImp implements AlumnoService {
 		});
 	}
 
-	
-
-
-
 	@Override
-	public AlumnoDTO buscarAlumno(String lu) {
+	public Alumno buscarAlumno(String lu) {
 		// TODO Auto-generated method stub
-		List<AlumnoDTO> fullAlumnos =alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAll());
-		for (AlumnoDTO alumno : fullAlumnos) {
+		List<Alumno> alumnos = alumnoRepository.findAlumnoByEstado(true);
+		for(int i=0;i < alumnos.size();i++) {
+			Alumno alumno = alumnos.get(i);
 			if(alumno.getLu().equals(lu)) {
 				return alumno;
 			}
@@ -58,15 +55,10 @@ public class AlumnoServiceImp implements AlumnoService {
 	}
 
 	@Override
-	public void modificarAlumno(AlumnoDTO alumnoDTOModificado) {
-		/*
-		 * int i=0; List<Alumno> alumnos = alumnoRepository.findAll(); for (Alumno
-		 * alumno : alumnos) { if (alumno.getDni().equals(alumnoModificado.getDni())) {
-		 * 
-		 * } i++; }
-		 */
+	public void modificarAlumno(Alumno alumnoModificado) {
+
 		// TODO Auto-generated method stub
-		alumnoRepository.save(alumnoMapDTO.convertirAlumnoDTOAAlumno(alumnoDTOModificado));
+		alumnoRepository.save(alumnoModificado);
 	}
 
 

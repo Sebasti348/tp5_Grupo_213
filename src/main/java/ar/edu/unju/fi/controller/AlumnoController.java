@@ -52,7 +52,7 @@ public class AlumnoController {
 	@GetMapping("/modificarAlumno/{lu}")
 	public ModelAndView getFormModificarAlumno(@PathVariable(name = "lu") String lu) {
 		// buscar
-		AlumnoDTO alumno = alumnoService.buscarAlumno(lu);
+		Alumno alumno = alumnoService.buscarAlumno(lu);
 		// mostrar el nuevo formulario
 		ModelAndView modelView = new ModelAndView("formAlumno");
 		modelView.addObject("nuevoAlumno", alumno);
@@ -61,7 +61,7 @@ public class AlumnoController {
 	}
  
 	@PostMapping("/modificarAlumno")	
-	public ModelAndView updateAlumnoByName(@ModelAttribute("nuevoAlumno") AlumnoDTO alumnoModificado) {
+	public ModelAndView updateAlumnoByName(@ModelAttribute("nuevoAlumno") Alumno alumnoModificado) {
 
 		// guardar
 		alumnoService.modificarAlumno(alumnoModificado);
