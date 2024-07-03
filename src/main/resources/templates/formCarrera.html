@@ -26,14 +26,14 @@
 	                <div class="col-md-12 d-flex align-items-center">
 	                  <div class="card-body py-5 px-4 p-md-5" style="background-color:#000000;">
 	
-	                    <form data-th-object="${nuevaCarreras}" 
-							data-th-action="${estado}?@{/modificarCarreras}:@{/guardarCarreras}" 
+	                    <form data-th-object="${nuevaCarrera}" 
+							data-th-action="${flag}?@{/modificarCarrera}:@{/guardarCarrera}" 
 							method="post" 
 							>
 	                    <h3 class="fw-bold mb-4" id="titulo" style="color: #92aad0;">Formulario Carrera</h3>
 						
 						<div class="form-outline mb-4">
-	                        <input type="text" id="cod" class="form-control" data-th-field="*{cod}" data-th-readonly="${estado}">
+	                        <input type="text" id="cod" class="form-control" data-th-field="*{codigo}" data-th-readonly="${flag}">
 	                        <label class="form-label" for="cod">Codigo</label>
 	                      </div>
 	                      
@@ -43,9 +43,18 @@
 	                     </div>
 	
 	                     <div class="form-outline mb-4">
-	                        <input type="number" id="cantidad" class="form-control" data-th-field="*{cantAños}"/>
+	                        <input type="number" id="cantidad" class="form-control" data-th-field="*{cantidadHoras}"/>
 	                        <label class="form-label" for="cantidad">Cantidad de Años</label>
 	                     </div>
+	                     <div class="col-sm-6">
+							<label for="estadoCarrera" class="form-label mt-1">Estado</label><br>
+							<select class="form-select" id="estadoCarrera"
+								data-th-field="*{estado}">
+								<option value="true">True</option>
+								<option value="false">False</option>
+							</select>
+						</div>
+						<br>
 						<div class="d-flex justify-content-end pt-1 mb-4">
 	                        <button type="submit" class="btn btn-custom btn-outline-light btn-rounded ">Guardar Carrera</button>
 	                    </div>
