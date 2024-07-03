@@ -32,7 +32,6 @@ public class AlumnoServiceImp implements AlumnoService {
 	
 	@Override
 	public void borrarAlumno(String lu) {
-		
 		List<AlumnoDTO> alumnosDTO = alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAll());
 		alumnosDTO.forEach(adto -> {
 			if(adto.getLu().equals(lu)) {
@@ -40,10 +39,6 @@ public class AlumnoServiceImp implements AlumnoService {
 				alumnoRepository.save(alumnoMapDTO.convertirAlumnoDTOAAlumno(adto));
 			}
 		});
-		/*
-		 * Alumno alumno=alumnoRepository.findById(lu).get(); alumno.setEstado(false);
-		 * alumnoRepository.save(alumno);
-		 */
 	}
 
 	

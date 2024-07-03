@@ -72,4 +72,17 @@ public class AlumnoController {
 		return modelView;
 	} 
 	
+	@GetMapping("/borrarAlumno/{lu}")
+	public ModelAndView deleteAlumnoDelListado(@PathVariable (name="lu") String lu) {
+		
+		//borrar
+		alumnoService.borrarAlumno(lu);
+		
+		//mostrar nueva lista de alumnos
+		ModelAndView modelView = new ModelAndView("listaDeAlumnos");
+		modelView.addObject("listadoAlumnos",alumnoService.mostrarAlumnos());
+		
+		 return modelView;
+	}
+	
 }
