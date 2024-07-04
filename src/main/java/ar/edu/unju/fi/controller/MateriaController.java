@@ -47,15 +47,14 @@ public class MateriaController {
 				modelView.addObject("flag", false);
 			} else {
 				materiaParaGuardar.setDocente(docenteService.buscarDocente(materiaParaGuardar.getDocente().getLegajo()));
-				materiaService.guardarMateria(materiaParaGuardar);
-				modelView.addObject("listadoMaterias", materiaService.mostrarMaterias());	
+				materiaService.guardarMateria(materiaParaGuardar);	
 			}
 		} catch (Exception e) {
 			modelView.addObject("errors", true);
 			modelView.addObject("cargaMateriaErrorMessage", "Error al cargar en la BD" + e.getMessage());
 			System.out.println(e.getMessage());
 		}
-
+		modelView.addObject("listadoMaterias", materiaService.mostrarMaterias());	
 		return modelView;
 	}
 
@@ -84,15 +83,14 @@ public class MateriaController {
 	@PostMapping("/modificarMateria")
 	public ModelAndView updateMateria(@Valid @ModelAttribute("nuevaMateria") Materia materiaModificada, BindingResult result) {
 		ModelAndView modelView = new ModelAndView("listaDeMaterias");
-		modelView.addObject("listadoMaterias", materiaService.mostrarMaterias());	
 		try {
 			if (result.hasErrors()) {
 				modelView.addObject("nuevaMateria", materiaModificada);
-				modelView.setViewName("formMateria");
+				modelView.addObject("listadoDocentes", docenteService.mostrarDocentes());
+				modelView.addObject("flag", true);
 			} else {
 				materiaModificada.setDocente(docenteService.buscarDocente(materiaModificada.getDocente().getLegajo()));
 				materiaService.modificarMateria(materiaModificada);
-				modelView.addObject("listadoMaterias", materiaService.mostrarMaterias());
 			}
 		} catch (Exception e) {
 			modelView.addObject("errors", true);
@@ -100,7 +98,7 @@ public class MateriaController {
 			System.out.println(e.getMessage());
 
 		}
-
+		modelView.addObject("listadoMaterias", materiaService.mostrarMaterias());
 		return modelView;
 	}
 
