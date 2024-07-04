@@ -47,7 +47,7 @@ public class DocenteController {
 			modelView.addObject("cargaMateriaErrorMessage", "Error al cargar en la BD" + e.getMessage());
 			System.out.println(e.getMessage());
 		}
-		
+		modelView.addObject("listadoDocentes", docenteService.mostrarDocentes());	
 		return modelView;		
 	}
 	@GetMapping("/listadoDocentes")
@@ -81,13 +81,21 @@ public class DocenteController {
 	}
 
 	@PostMapping("/modificarDocente")	
-	public ModelAndView updateDocente(@ModelAttribute("nuevoDocente") Docente docenteModificado) {
-
-		// guardar
-		//ListadoDocentes.modificarDocente(docenteModificada);
-		docenteService.modificarDocente(docenteModificado);
-
+	public ModelAndView updateDocente(@Valid @ModelAttribute("nuevoDocente") Docente docenteModificado,BindingResult result) {
 		ModelAndView modelView = new ModelAndView("listaDeDocentes");
+		try {
+			if (result.hasErrors()) {
+				modelView.addObject("nuevaMateria", docenteModificado);
+				modelView.addObject("flag", true);
+			} else {
+				docenteService.modificarDocente(docenteModificado);
+			}
+		} catch (Exception e) {
+			modelView.addObject("errors", true);
+			modelView.addObject("cargaMateriaErrorMessage", "Error al cargar en la BD" + e.getMessage());
+			System.out.println(e.getMessage());
+
+		}
 		modelView.addObject("listaDocentes", docenteService.mostrarDocentes());
 
 		return modelView;

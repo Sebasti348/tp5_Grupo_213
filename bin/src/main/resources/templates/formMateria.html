@@ -16,16 +16,13 @@
 		<form data-th-object="${nuevaMateria}"
 			data-th-action="${flag}?@{/modificarMateria}:@{/guardarMateria}"
 			method="post">
-
+			
 			<div class="col-sm-6">
 				<label for="codigo" class="form-label">Código</label> <input
 					type="text" class="form-control" id="codigo"
 					data-th-field="*{codigo}" data-th-readonly="${flag}" required>
-				<p class="form-text text-danger"
-					data-th-if="${#fields.hasErrors('codigo')}"
-					data-th-errors="*{codigo}"></p>
 			</div>
-
+			
 			<div class="col-sm-6">
 				<label for="nombre" class="form-label">Nombre Materia</label> <input
 					type="text" class="form-control" id="nombre"
@@ -39,9 +36,6 @@
 				<label for="curso" class="form-label">Curso</label> <input
 					type="text" class="form-control" id="curso"
 					data-th-field="*{curso}" required>
-				<p class="form-text text-danger"
-					data-th-if="${#fields.hasErrors('curso')}"
-					data-th-errors="*{curso}"></p>
 			</div>
 
 			<div class="col-sm-6">
@@ -75,14 +69,11 @@
 						data-th-value="${d.legajo}" data-th-text="${d.nombre}"></option>
 				</select>
 			</div>
-
+			
 			<div class="col-sm-6">
 				<label for="carrera" class="form-label">Carrera</label> <input
 					type="text" class="form-control" id="carrera"
 					data-th-field="*{carrera}" required>
-				<p class="form-text text-danger"
-					data-th-if="${#fields.hasErrors('carrera')}"
-					data-th-errors="*{carrera}"></p>
 			</div>
 
 			<br>
