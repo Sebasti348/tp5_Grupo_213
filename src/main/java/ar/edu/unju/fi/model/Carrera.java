@@ -1,9 +1,13 @@
 package ar.edu.unju.fi.model;
-
+import java.util.List;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,7 +21,7 @@ import lombok.ToString;
 
 @Component
 @Entity
-@Table(name="carreras")
+@Table(name="carrera")
 public class Carrera {
 	
 	@Id
@@ -25,4 +29,6 @@ public class Carrera {
 	private String nombre;
 	private int cantidadAños;
 	private boolean estado;
+	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
+	private List<Alumno> alumnos;
 }

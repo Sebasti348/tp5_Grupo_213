@@ -3,7 +3,10 @@ package ar.edu.unju.fi.model;
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
 @Component
@@ -20,5 +23,7 @@ public class Alumno {
 	private String fec_nac;
 	private String domicilio;
 	private Boolean estado;
-
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "carrera_cod")
+	private Carrera carrera;
 }
