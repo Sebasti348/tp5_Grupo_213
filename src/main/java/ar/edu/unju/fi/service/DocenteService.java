@@ -12,5 +12,5 @@ public interface DocenteService {
 	public List<DocenteDTO> mostrarDocentes();
 	public void borrarDocente(String legajo);
 	public void modificarDocente(DocenteDTO docenteDTOModificado);
-	public DocenteDTO buscarDocente(String legajo);
+	public Docente buscarDocente(String legajo);
 }

@@ -31,10 +31,11 @@ public class DocenteServiceImp implements DocenteService{
 				}});
 	}
 	@Override
-	public DocenteDTO buscarDocente(String legajo) {
+	public Docente buscarDocente(String legajo) {
 		// TODO Auto-generated method stub
-		List<DocenteDTO> fullDocentes =docenteMapDTO.convertirListaDocentesAListaDocentesDTO(docenteRepository.findAll());
-		for (DocenteDTO docente : fullDocentes) {
+		List<Docente> docentes = docenteRepository.findDocenteByEstado(true);
+		for(int i=0;i < docentes.size();i++) {
+			Docente docente = docentes.get(i);
 			if(docente.getLegajo().equals(legajo)) {
 				return docente;
 			}

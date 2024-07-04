@@ -14,7 +14,6 @@ public interface DocenteMapDTO {
 	@Mapping(source="nombre", target="nombre")
 	@Mapping(source="apellido", target="apellido")	
 	@Mapping(source="email", target="email")
-	@Mapping(source="telefono", target="telefono")
 	@Mapping(source="estado", target="estado")
 	DocenteDTO convertirDocenteADocenteDTO(Docente d);
 	@InheritConfiguration	

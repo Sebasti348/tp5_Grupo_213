@@ -40,7 +40,7 @@ public class DocenteController {
 		@GetMapping("/modificarDocente/{legajo}")
 		public ModelAndView getFormModificarDocente(@PathVariable(name = "legajo") String legajo) {
 			// buscar Docente
-			DocenteDTO docente = docenteService.buscarDocente(legajo);
+			Docente docente = docenteService.buscarDocente(legajo);
 			// mostrar el nuevo formulario
 			ModelAndView modelView = new ModelAndView("formDocente");
 			modelView.addObject("nuevoDocente", docente);
